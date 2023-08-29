@@ -1,0 +1,111 @@
+#!/bin/bash
+
+# Duvan Camilo Puerto Barajas
+# cst8102 section: 313
+# This program gets the weight and the height
+# by the user and then return the BMI 
+# and the expected category:
+# Category 1: Underweight
+# Category 2: Normal weight
+# Category 3: Overweight
+# Category 4: Obesity
+
+
+# clear the screen of the shell
+clear
+
+# gets the weight and the height by keyboard input
+read -p "Enter your height in m: " he
+read -p "Enter your weight in kg: " we
+
+# gets the BMI throug the formula: 
+#BMI = weight / (height * height)
+wepor2=$(echo "scale=2; $he*$he" | bc)
+BMI=$(echo "scale=2; $we/$wepor2" | bc)
+
+
+# Print out the BMI
+echo "Your BMI is: "$BMI
+
+
+
+# The next if Statements are used to verify
+# which category the BMI is in. First
+# Every result# variable will get a return
+# boolean from "bc" depending of the logic
+# of every category. Then using the boolian
+# the if will states if the value corresponds
+# to the category or not.
+
+
+# first if statement ----------------------
+# Underweight Category
+
+
+# if BMI < 18.5 --> will return 1
+result1=$(echo "$BMI < 18.5" | bc -l)
+
+
+# if result 1 is iquals to 1, then print the category
+if (($result1 == 1));
+then
+	echo "Category: Underweight"
+fi
+
+
+
+
+# second if statement ----------------------
+# Normal weight Category
+
+
+# if 18.5 <= BMI < 25 --> will return 1
+result2=$(echo "$BMI >= 18.5 &&  $BMI <25" | bc -l)
+
+
+# if result 1 is iquals to 1, then print the category
+if (($result2 == 1));
+then
+        echo "Category: Normal Weight"
+fi
+
+
+
+
+
+
+# third  if statement ----------------------
+# Overweight Category
+
+#if 25 <= BMI < 30 --> will return 1
+result3=$(echo "$BMI >= 25 &&  $BMI <30" | bc -l)
+
+
+# if result 1 is iquals to 1, then print the category
+if (($result3 == 1));
+then
+        echo "Category: Overweight"
+fi
+
+
+
+
+
+# fourth if statement ----------------------
+# Obesity Category
+
+# if BMI >= 30 --> will return 1
+result4=$(echo "$BMI >= 30" | bc -l)
+
+
+# if result 1 is iquals to 1, then print the category
+if (($result4 == 1));
+then
+        echo "Category: Obesity"
+fi
+
+
+
+
+
+
