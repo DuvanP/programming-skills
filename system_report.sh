@@ -5,6 +5,7 @@
 #ready for submission on aug 06 2023
 #Description: This is a program that get information
 # of the system like the CPU, memory ram, memory rom and general info about the operative system 
+# this is the test
 
 
 
